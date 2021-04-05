@@ -1,0 +1,117 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+    <title>Resizer App</title>
+</head>
+<body>
+    <main>
+        <div class="mainImageContainer">
+            <div class="mainImage">
+                {% if data %}
+                <img class="uploadedImage" src="/images/{{data.image}}" />
+                {% else %}
+                <form method="post" enctype="multipart/form-data" action="">
+                    {% csrf_token %}
+                    <label for="fileUpload" class="customFileUpload">
+                        Browse
+                    </label>
+                    <input name="fileImage" id="fileUpload" type="file" accept="image/jpeg,image/png,image/jpg" onchange="form.submit()">
+                </form>
+                {% endif %}
+            </div>
+            <div class="mainImageAdjuster">
+                <h4 class="topLabel">Custom Resize</h4>
+                <form action="{% url 'resized' %}" name="resizeForm" onsubmit="return validateForm()" method="post">
+                    {% csrf_token %}
+                    {% if data %}
+                    <input type="text" name="imageName" value="{{data.image_name}}" class="hide">
+                    <input type="text" name="image" value="{{data.image}}" class="hide">
+                    {% endif %}
+                    <div class="imgInputContainer">
+                        <div class="inputWithLabel">
+                            <p class="inputWithLabelTitle">Width</p>
+                            <div class="inputWrapper">
+                                {% if data %}
+                                <input type="number" id="width" name="width" class="inputWrapperInput" value="{{data.image_width}}">
+                                {% else %}
+                                <input type="number" class="inputWrapperInput" placeholder="0" disabled>
+                                {% endif %}
+                                <span class="inputWrapperMeasure">px</span>
+                            </div>
+                        </div>
+                        <div class="inputWithLabel">
+                            <p class="inputWithLabelTitle">Height</p>
+                            <div class="inputWrapper">
+                                {% if data %}
+                                <input type="number" id="height" name="height" class="inputWrapperInput" value="{{data.image_height}}">
+                                {% else %}
+                                <input type="number" class="inputWrapperInput" placeholder="0" disabled>
+                                {% endif %}
+                                <span class="inputWrapperMeasure">px</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imgInputContainer">
+                        <div class="inputWithLabel">
+                            <p class="inputWithLabelTitle">X Scale</p>
+                            <div class="inputWrapper">
+                                {% if data %}
+                                <input type="number" id="xScale" name="xScale" class="inputWrapperInput" value="100">
+                                {% else %}
+                                <input type="number" class="inputWrapperInput" placeholder="100" disabled>
+                                {% endif %}
+                                <span class="inputWrapperMeasure">%</span>
+                            </div>
+                        </div>
+                        <div class="inputWithLabel">
+                            <p class="inputWithLabelTitle">Y Scale</p>
+                            <div class="inputWrapper">
+                                {% if data %}
+                                <input type="number" id="yScale" name="yScale" class="inputWrapperInput" value="100">
+                                {% else %}
+                                <input type="number" class="inputWrapperInput" placeholder="100" disabled>
+                                {% endif %}
+                                <span class="inputWrapperMeasure">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lockAspect">
+                        {% if data %}
+                        <input type="checkbox" id="lockAspectRatio" class="lockAspectCheck">
+                        {% else %}
+                        <input type="checkbox" class="lockAspectCheck" disabled>
+                        {% endif %}
+                        <span class="lockAspectText">Lock Aspect Ratio</span>
+                    </div>
+                    {% if data %}
+                    <div class="BtnContainer">
+                        <button class="Btn" type="submit">Resize</button>
+                    </div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </main>
+    <div class="modal hide" id="errorModal">
+        <p class="modalHeading" id="modalHead"></p>
+        <p class="modalMessage" id="modalMsg"></p>
+        <div class="half">
+            <div class="BtnContainer">
+                <button class="Btn" onclick="closeModal()">close</button>
+            </div>
+        </div>
+        
+    </div>
+    {% if data %}
+    <script src="{% static '/js/app.js' %}"></script>
+    {% endif %}
+</body>
+</html>

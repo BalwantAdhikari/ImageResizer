@@ -1,0 +1,214 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Lexend', sans-serif;
+}
+
+.mainImageContainer {
+    display: flex;
+    padding: 20px;
+    width: 820px;
+    height: 312px;
+    border-radius: 10px;
+    margin: 21vh auto;
+    box-shadow: 10px 8px 20px rgb(173, 171, 171);
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0;
+}
+
+.mainImage {
+    width: 60%;
+    border: 2px dashed #c0c0c0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+}
+
+.mainImage input[type="file"] {
+    display: none;
+}
+
+.customFileUpload {
+    background-color: rgb(51, 51, 218);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 30px;
+    text-align: center;
+    width: 20%;
+    font-size: 15px;
+}
+
+.customFileUpload:hover {
+    cursor: pointer;
+    background-color: rgba(51, 51, 218, 0.8);
+}
+
+.mainImageAdjuster {
+    width: 30%;
+    padding: 20px 5%;
+}
+
+.mainImageAdjuster h4{
+    font-weight: 500;
+}
+
+.imgInputContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputWithLabel {
+    padding-top: 20px;
+}
+
+.inputWithLabelTitle {
+    font-size: .7em;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.inputWrapper {
+    position: relative;
+}
+
+.inputWrapperInput {
+    padding: 7px 25px 7px 14px;
+    border: 1px solid #e4e4e4;
+    border-radius: 5px;
+    background-color: #fafafa;
+    width: 70px;
+}
+
+.inputWrapperInput:focus {
+    outline: none;
+    border: 1px solid #aaaaaa;
+}
+
+.inputWrapperInput::placeholder {
+    color: black;
+}
+
+.inputWrapperMeasure {
+    position: absolute;
+    border-left: 1px solid #e4e4e4;
+    right: 0;
+    bottom: 0;
+    width: 26px;
+    height: 100%;
+    color: #3a3a3a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .9em;
+}
+
+.lockAspect {
+    display: flex;
+    margin: 20px 0px;
+}
+
+.lockAspectText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7em;
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.BtnContainer, .cancelContainer {
+    text-align: center;
+}
+
+.Btn, .cancelBtn {
+    padding: 10px 15px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 30px;
+    text-align: center;
+    width: 60%;
+    font-size: 15px;
+    outline: none;
+}
+
+.cancelBtn {
+    width: 30%;
+}
+
+.Btn:hover {
+    background-color: rgb(51, 51, 218);
+    cursor: pointer;
+    color: white;
+    border: none;
+}
+
+.Btn:active {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+
+.half {
+    width: 50%;
+    margin: auto;
+}
+
+.mxAuto {
+    margin-top: 50px;
+}
+
+.uploadedImage {
+    max-width:100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.hide {
+    display: none;
+}
+
+.modal {
+    position: absolute;
+    top: 25%;
+    left: 30%;
+    width: 40%;
+    height: 50vh;
+    background-color: rgb(236, 234, 234);
+    border-radius: 15px;
+}
+
+.modalHeading {
+    font-size: 2em;
+    text-align: center;
+    margin: 10% 0;
+}
+
+.modalMessage {
+    font-size: 1em;
+    text-align: center;
+    margin: 10% 0;
+}
+
+@media only screen and (max-width: 900px) {
+    .mainImageContainer {
+        flex-direction: column;
+        width: 60%;
+        height: 600px;
+    }
+
+    .mainImage {
+        width: auto;
+        height: 300px;
+    }
+
+    .mainImageAdjuster {
+        width: 50%;
+        margin: auto;
+        padding: 0;
+    }
+}

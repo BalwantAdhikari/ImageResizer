@@ -1,0 +1,20 @@
+Please follow the steps to the run the project:
+
+1) Make a virtual environment in the current folder using cmd
+	- python -m venv env
+
+2) activate the virtual environment
+	- env\Scripts\activate
+
+3) install django and pillow
+	- pip install django
+	- pip install Pillow
+
+4) cd to imageResizer
+	- cd imageResizer
+
+5) migrate
+	- python manage.py migrate
+
+6) run django project
+	- python manage.py runserver 
